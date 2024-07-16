@@ -9,14 +9,18 @@ import android.widget.EditText;
 
 public class WelcomeBackActivity extends AppCompatActivity {
 
-    private static final String DUMMY_USERNAME = "dtsawardee";
-    private static final String DUMMY_PASSWORD = "dtsrocks";
+    private static final String DUMMY_USERNAME = "dtskominfo";
+    private static final String DUMMY_PASSWORD = "poliwangi";
 
     // Komponen
     private EditText edtUsername;
     private EditText edtPassword;
     private CheckBox chkRememberUsername;
     private CheckBox chkKeepLogin;
+
+
+
+
 
 
     @Override
