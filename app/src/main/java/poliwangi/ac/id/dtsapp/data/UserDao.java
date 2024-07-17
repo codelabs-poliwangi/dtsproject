@@ -10,7 +10,8 @@ import android.arch.persistence.room.Update;
 import java.util.List;
 
 
-public interface UserDao {
+public interface UserDao
+{
     @Query("Select * FROM user")
     List<User> getAll();
 
@@ -20,6 +21,16 @@ public interface UserDao {
     @Query("SELECT * FROM user LIMIT 1")
     User selectOne();
 
+    @Query ("SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1")
+    User findByUsernameAndPassword(String username, String password);
 
+    @Insert
+    void insertAll(User... user);
+
+    @Delete
+    void delete(User user);
+
+    @Update
+    void update(User user);
 
 }
