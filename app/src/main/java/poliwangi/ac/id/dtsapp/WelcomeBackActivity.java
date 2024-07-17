@@ -1,5 +1,6 @@
 package poliwangi.ac.id.dtsapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,9 @@ public class WelcomeBackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_back);
+
+        this.sharedPrefs = this.getSharedPreferences
+                ("dtsapp_sharedprefs", Context.MODE_PRIVATE);
 
         this.initComponents();
     }
@@ -74,6 +78,12 @@ public class WelcomeBackActivity extends AppCompatActivity {
     private void saveUsername()
     {
         // Menyimpan username bila diperlukan
+        SharedPreferences.Editor editor = this.sharedPrefs.edit();
+        if (this.chkRememberUsername.isChecked())
+            editor.putString(USERNAME_KEY, this.edtUsername.getText().toString());
+        else
+            editor.remove(USERNAME_KEY);
+        editor.apply();
     }
 
     private void loadSavedUsername()
