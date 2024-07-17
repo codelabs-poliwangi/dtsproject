@@ -9,14 +9,20 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import java.util.Objects;
+
 public class WelcomeBackActivity extends AppCompatActivity {
 
 
     //sharedpreferend yang digunakan untuk read/write
     private SharedPreferences sharedPrefs;
 
-    private static final String USERNAME_KEY = "dtskominfo";
-    private static final String KEEP_LOGIN_KEY = "poliwangi";
+    private static final String DUMMY_USERNAME = "dtskominfo";
+    private static final String DUMMY_PASSWORD = "poliwangi";
+
+
+    private static final String USERNAME_KEY = "key_username";
+    private static final String KEEP_LOGIN_KEY = "key_keep_login";
 
     // Komponen
     private EditText edtUsername;
@@ -39,6 +45,8 @@ public class WelcomeBackActivity extends AppCompatActivity {
                 ("dtsapp_sharedprefs", Context.MODE_PRIVATE);
 
         this.initComponents();
+        this.autoLogin();
+        this.saveUsername();
     }
 
     private void initComponents()
@@ -112,5 +120,15 @@ public class WelcomeBackActivity extends AppCompatActivity {
     {
         // Cek apakah sebelumnya aplikasi diatur agar bypass login?
         // Jika ya maka langsung buka activity berikutnya
+    }
+
+    private boolean validateCredential()
+    {
+        String currentUsername = this.edtUsername.getText().toString();
+        String currentPassword = this.edtPassword.getText().toString();
+
+        return (Objects.equals(currentUsername, DUMMY_USERNAME)
+                && Objects.equals(currentPassword, DUMMY_PASSWORD));
+
     }
 }
