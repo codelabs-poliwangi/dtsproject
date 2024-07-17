@@ -81,7 +81,7 @@ public class WelcomeBackActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this."invalid username/password",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "invalid username/password",Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -124,6 +124,17 @@ public class WelcomeBackActivity extends AppCompatActivity {
     private void makeAutoLogin()
     {
         // Mengatur agar selanjutnya pada saat aplikasi dibuka menjadi otomatis login
+
+    SharedPreferences.Editor editor = this.sharedPrefs.edit();
+    if(this.chkKeepLogin.isChecked())
+        editor.putBoolean(KEEP_LOGIN_KEY, true);
+    else
+        editor.remove(KEEP_LOGIN_KEY);
+
+    editor.apply();
+
+
+
     }
 
     // QUIZ!
