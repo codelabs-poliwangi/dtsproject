@@ -67,6 +67,15 @@ public class ProfileActivity extends AppCompatActivity
 
     public void onBtnSave_Click(View view)
     {
+        //memperbaharui/update data di property currentUser
+        this.syncData();
+
+        //mendapatkan class DAO dari DTS App Database
+
+        UserDao daoUser = AppDbProvider.getInstance(this).userDao();
+
+        // menggunakan DAO untuk menyimpan data user ke currentUser
+        daoUser.update(this.currentUser);
         Toast.makeText(this, "Your data has been updated!", Toast.LENGTH_SHORT).show();
     }
 
