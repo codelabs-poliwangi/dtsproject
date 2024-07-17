@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -68,11 +69,21 @@ public class WelcomeBackActivity extends AppCompatActivity {
 
     public void onBtnLogin_Click(View view)
     {
-        Intent i = new Intent(WelcomeBackActivity.this, HomeActivity.class);
-        startActivity(i);
+        boolean valid = this.validateCredential();
 
-        this.saveUsername();
-        this.makeAutoLogin();
+
+        if(valid) {
+            Intent i = new Intent(WelcomeBackActivity.this, HomeActivity.class);
+            startActivity(i);
+
+            this.saveUsername();
+            this.makeAutoLogin();
+        }
+        else
+        {
+            Toast.makeText(this."invalid username/password",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void onBtnRegister_Click(View view)
