@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import poliwangi.ac.id.dtsapp.data.AppDbProvider;
 import poliwangi.ac.id.dtsapp.data.User;
+import poliwangi.ac.id.dtsapp.data.UserDao;
 
 public class RegisterActivity extends AppCompatActivity
 {
@@ -34,7 +36,12 @@ public class RegisterActivity extends AppCompatActivity
 
     public void onBtnRegisterNow_Click(View view)
     {
-        // Tampilkan pesan konfirmasi
+        //mendapatkan DAO dari DTSAPPDatabase
+        UserDao daoUser = AppDbProvider.getInstance(this.getApplicationContext()).userDao();
+
+        //menggunakan DAO untuk melakukan proses insert data ke class entity
+        daoUser.insertAll(this.makeUser());
+        //Tampilkan pesan konfirmasi
         Toast.makeText(this, "Register Success!", Toast.LENGTH_SHORT).show();
 
         // Kembali ke halaman login
@@ -42,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity
     }
 
 
+    //buat atau tambah user baru
     private User makeUser (){
         User u = new User();
         u.username = this.edtUsername.getText().toString();
