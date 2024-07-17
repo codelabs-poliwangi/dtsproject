@@ -142,6 +142,8 @@ public class WelcomeBackActivity extends AppCompatActivity {
     {
         // Cek apakah sebelumnya aplikasi diatur agar bypass login?
         // Jika ya maka langsung buka activity berikutnya
+        boolean keepLogin = this.sharedPrefs.getBoolean(???, false);
+
     }
 
     private boolean validateCredential()
