@@ -90,6 +90,15 @@ public class WelcomeBackActivity extends AppCompatActivity {
     {
         // Memeriksa apakah sebelumnya ada username yang tersimpan?
         // Jika ya, maka tampilkan username tersebut di EditText username.
+
+
+        String savedUsername = this.sharedPrefs.getString(USERNAME_KEY, null);
+        if (savedUsername != null)
+        {
+            this.edtUsername.setText(savedUsername);
+            this.chkRememberUsername.setChecked(true);
+        }
+
     }
 
 
