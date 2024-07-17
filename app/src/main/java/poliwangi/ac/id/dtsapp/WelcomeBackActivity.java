@@ -1,6 +1,7 @@
 package poliwangi.ac.id.dtsapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +10,19 @@ import android.widget.EditText;
 
 public class WelcomeBackActivity extends AppCompatActivity {
 
-    private static final String DUMMY_USERNAME = "dtskominfo";
-    private static final String DUMMY_PASSWORD = "poliwangi";
+
+    //sharedpreferend yang digunakan untuk read/write
+    private SharedPreferences sharedPrefs;
+
+    private static final String USERNAME_KEY = "dtskominfo";
+    private static final String KEEP_LOGIN_KEY = "poliwangi";
 
     // Komponen
     private EditText edtUsername;
     private EditText edtPassword;
     private CheckBox chkRememberUsername;
     private CheckBox chkKeepLogin;
+
 
 
 
